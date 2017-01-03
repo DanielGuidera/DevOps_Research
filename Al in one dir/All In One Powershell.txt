@@ -1,0 +1,6 @@
+$Folders = get-childitem -path "E:\Build Definitions\BuildDef1\Scripts" -Recurse -file
+foreach ($File in $Folders)
+{
+#Add-Content "E:\Build Definitions\BuildDef1\Scripts\names.txt" $file
+invoke-sqlcmd -inputfile "$file.fullname" -database "%DB_Name%" -U "TeamCity" -P "tcpsw"
+}
